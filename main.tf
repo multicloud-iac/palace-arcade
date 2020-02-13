@@ -16,7 +16,7 @@ variable "location" {
 }
 
 variable "https_only" {
-  default = "true"
+  default = "false"
 }
 
 # Azure Infrastrcture
