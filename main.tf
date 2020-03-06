@@ -7,7 +7,7 @@ variable "prefix" {
 
 # Change to robpco/pizzaplanet or palacearcade
 variable "image" {
-  default = "robpco/palacearcade"
+  default = "robpco/pizzaplanet"
 }
 
 # Choose a location
@@ -16,7 +16,7 @@ variable "location" {
 }
 
 variable "https_only" {
-  default = "false"
+  default = "true"
 }
 
 # Azure Infrastrcture
