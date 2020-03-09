@@ -7,7 +7,7 @@ variable "prefix" {
 
 # Change to robpco/pizzaplanet or palacearcade
 variable "image" {
-  default = "robpco/pizzaplanet"
+  default = "robpco/palacearcade"
 }
 
 # Choose a location
