@@ -21,7 +21,7 @@ variable "https_only" {
 
 # Azure Infrastrcture
 provider "azurerm" {
-  version = "=1.4.4"  
+  version = "=1.44.0"  
 }
 
 # Create Resource Group
