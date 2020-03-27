@@ -20,7 +20,9 @@ variable "https_only" {
 }
 
 # Azure Infrastrcture
-provider "azurerm" {}
+provider "azurerm" {
+  version = "=1.4.4"  
+}
 
 # Create Resource Group
 resource "azurerm_resource_group" "arcade" {
