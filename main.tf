@@ -16,7 +16,7 @@ resource "azurerm_resource_group" "arcade" {
 # Utilize the web_app_container module from TFE Private Registry
 module "web_app_container" {
   source  = "app.terraform.io/multicloud/web-app-container/azurerm"
-  version = "2.6.1"
+  version = "2.6.2"
 
   name                = var.prefix
   resource_group_name = azurerm_resource_group.arcade.name
