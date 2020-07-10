@@ -1,48 +1,29 @@
-# VARIABLES
-
-# Public URL Prefix = http://PREFIX.azurewebsites.net/
-variable "prefix" {
-  default = "robpco-arcade"
+terraform {
+  required_version = ">= 0.12"
 }
 
-# Change to robpco/pizzaplanet or palacearcade
-variable "image" {
-  default = "robpco/palacearcade"
-}
-
-# Choose a location
-variable "location" {
-  default = "centralus"
-}
-
-variable "https_only" {
-  default = "false"
-}
-
-# Azure Infrastrcture
+# Azure Provider
 provider "azurerm" {
-  version = "=1.44.0"  
+  version = "~>2.17.0"
+  features {}
 }
 
 # Create Resource Group
 resource "azurerm_resource_group" "arcade" {
   name     = "${var.prefix}-containerapp-demo"
-  location = "${var.location}"
+  location = var.location
 }
 
 # Utilize the web_app_container module from TFE Private Registry
 module "web_app_container" {
   source  = "app.terraform.io/multicloud/web-app-container/azurerm"
-  version = "1.5.0"
+  version = "2.6.4"
 
-  name                = "${var.prefix}"
-  resource_group_name = "${azurerm_resource_group.arcade.name}"
-  container_image     = "${var.image}"
-  container_type      = "docker"
-  https_only          = "${var.https_only}"
-  port                = "80"
-}
-
-output "container_app_url" {
-  value = "https://${module.web_app_container.hostname}"
+  name                    = var.prefix
+  resource_group_name     = azurerm_resource_group.arcade.name
+  resource_group_location = azurerm_resource_group.arcade.location
+  container_image         = var.image
+  container_type          = "docker"
+  https_only              = var.https_only
+  port                    = "80"
 }
